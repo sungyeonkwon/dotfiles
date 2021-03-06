@@ -100,10 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# For Haskell GHCI
 export GHCI=stack ghci
 
-# For node modules
 export PATH=~/.node_modules/bin:$PATH
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -116,3 +114,16 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 export PATH=$HOME/bin/google-cloud-sdk/platform/google_appengine:$PATH
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+export PATH=$PATH:$HOME/.poetry/bin
+
+export PATH=$PATH:$HOME/.cargo/bin
+
+export PATH=$PATH:$HOME/project-dev/shell-script/bin
+
+function kp() {
+ kill -9 $(lsof -t -i:$1)
+}
